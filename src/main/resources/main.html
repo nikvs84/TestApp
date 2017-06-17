@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" charset="UTF-8" />
+		<title>TestApp</title>
+		<script language="JavaScript" src="jquery-3.2.1.min.js" ></script>
+	</head>
+	<form method="GET" action="http://localhost:8090/value" >
+		<input type="submit" value="Get value" />
+	</form>
+	<br />
+	<form method="POST" action="http://localhost:8090/value">
+		<input type="submit" value="Inc value" />
+	</form>
+	<br />
+
+    <input type="button" value="Dec value" onclick="sendDelete()" />
+
+
+	<script language="JavaScript" >
+		function sendDelete() {
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:8090/value",
+                success: function(msg){
+                    alert("Value decreased: " + msg);
+                }
+            });
+        }
+	</script>
+</html>

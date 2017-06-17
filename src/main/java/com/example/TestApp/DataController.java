@@ -19,9 +19,24 @@ public class DataController {
         System.out.println("================================================");
 
         for (Data data : dataRepository.findAll()) {
-            System.out.println("data.value = " + data.getValue());
+            System.out.println(data);
         }
 
         System.out.println("*********************************************************");
+    }
+
+    public Data getDataById(long id) {
+        Data result = dataRepository.findOne(id);
+        return result;
+    }
+
+    public void setDataValue(long id, int newValue) {
+        Data data = dataRepository.findOne(id);
+        data.setValue(newValue);
+        dataRepository.save(data);
+    }
+
+    public void saveData(Data data) {
+        dataRepository.save(data);
     }
 }
